@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhil Shrivas - Portfolio</title>
+    <meta name="description" content="Akhil Shrivas - B.Tech Computer Science & Engineering student passionate about web development, machine learning, and emerging technologies">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Akhil Shrivas</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#education" class="nav-link">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">Akhil Shrivas</span>
+                </h1>
+                <h2 class="hero-subtitle">Computer Science & Engineering Student</h2>
+                <p class="hero-description">
+                    Passionate about leveraging emerging technologies to solve real-world problems. 
+                    Specializing in React.js, Python, Machine Learning, and modern web development.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-img-container">
+                    <img src="assets/akhil guit2.jpg" alt="Akhil Shrivas" class="hero-img">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        I am a passionate B.Tech Computer Science & Engineering student at Sagar Group of Institutions - SISTec-R, 
+                        with a strong foundation in modern development tools and a growth-oriented mindset. I seek opportunities 
+                        that challenge me to innovate, contribute meaningfully, and drive both personal and organizational success 
+                        in the evolving tech landscape.
+                    </p>
+                    <p class="about-description">
+                        My expertise spans from frontend development with React.js and Tailwind CSS to backend development with Python, 
+                        and extends to machine learning applications. I'm particularly interested in real-time applications, 
+                        computer vision, and creating seamless user experiences.
+                    </p>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bhopal, Madhya Pradesh, India</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>akhilshrivas0@gmail.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91-9098398603</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span><a href="https://www.linkedin.com/in/akhilshrivas" target="_blank">linkedin.com/in/akhilshrivas</a></span>
+                        </div>
+                    </div>
+                    <div class="about-buttons">
+                        <a href="https://github.com/akhilshrivas" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-github"></i>
+                            View GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/akhil guit.jpg" alt="Akhil Shrivas" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="category-title">Frontend Development</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">React.js</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Tailwind CSS</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="category-title">Backend & Tools</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Machine Learning</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Firebase</span>
+                                <span class="skill-percentage">82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">GitHub</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="category-title">Deployment & Cloud</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Vercel</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">AWS</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">API Development</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/netflix-clone.jpg" alt="Netflix Clone">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="http://netflix-clone-mu-murex.vercel.app" class="project-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://github.com/akhilshrivas/netflix-clone" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Netflix Clone</h3>
+                        <p class="project-description">
+                            A responsive web application that replicates the core features of Netflix using React, Vite, Tailwind CSS, and Firebase. 
+                            Features secure user authentication, real-time data management, and TMDB API integration for trending movies and shows.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ReactJS</span>
+                            <span class="tech-tag">TMDB API</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                        <div class="project-date">July 2025</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/voice-recognition.jpg" alt="Real-time Voice Recognition">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/akhilshrivas/Real_time_voice_recognization.git" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Real-time Voice Recognition</h3>
+                        <p class="project-description">
+                            A real-time voice recognition application using Python, SpeechRecognition, and PyAudio libraries. 
+                            Captures live audio input, converts speech to text with high accuracy, and includes advanced noise filtering.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">SpeechRecognition</span>
+                            <span class="tech-tag">PyAudio</span>
+                        </div>
+                        <div class="project-date">July 2025</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/hand-gesture.jpg" alt="Hand Gesture Mouse">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/akhilshrivas/Hand-gesture-mouse.git" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hand Gesture Mouse</h3>
+                        <p class="project-description">
+                            A computer vision-based virtual mouse system using Python, OpenCV, and MediaPipe. 
+                            Tracks hand landmarks in real-time and interprets finger movements to control cursor, clicks, and drag-and-drop actions.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">MediaPipe</span>
+                            <span class="tech-tag">PyAutoGUI</span>
+                        </div>
+                        <div class="project-date">March 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="experience">
+        <div class="container">
+            <h2 class="section-title">Education & Training</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">B.Tech - Computer Science & Engineering</h3>
+                        <h4 class="timeline-company">Sagar Group of Institutions - SISTec-R</h4>
+                        <span class="timeline-date">2022 - 2026</span>
+                        <p class="timeline-description">
+                            Currently pursuing B.Tech in Computer Science & Engineering with CGPA: 6.91/10. 
+                            Focus on software development, web technologies, and emerging computing trends.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">12th Standard</h3>
+                        <h4 class="timeline-company">Balaji Public School Chhindwara M.P</h4>
+                        <span class="timeline-date">2022</span>
+                        <p class="timeline-description">
+                            Completed 12th standard from M.P Board with Percentage: 69.40/100.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">10th Standard</h3>
+                        <h4 class="timeline-company">Balaji Public School Chhindwara M.P</h4>
+                        <span class="timeline-date">2020</span>
+                        <p class="timeline-description">
+                            Completed 10th standard from M.P Board with Percentage: 68.67/100.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Frontend Development Training</h3>
+                        <h4 class="timeline-company">Sagar Group of Institutions - SISTec</h4>
+                        <span class="timeline-date">February 2025</span>
+                        <p class="timeline-description">
+                            Comprehensive training on Front-End Development covering HTML, CSS, JavaScript, Bootstrap, and jQuery. 
+                            Learned modern design principles and best practices for creating seamless user experiences.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's work together</h3>
+                    <p>es and exciting projects. 
+                        Whether you have a question or just want to say hi, feel free to reach out!
+                    </p>
+                        I'm always interested in new opportunities.
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>akhilshrivas0@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91-9098398603</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bhopal, Madhya Pradesh, India</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span><a href="https://www.linkedin.com/in/akhilshrivas" target="_blank">linkedin.com/in/akhilshrivas</a></span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <span class="error-message" id="name-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <span class="error-message" id="message-error"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loading">Sending...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Akhil Shrivas. All rights reserved.</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/akhilshrivas" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/akhilshrivas" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:akhilshrivas0@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
