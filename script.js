@@ -1,3 +1,29 @@
+// Suppress browser extension errors
+window.addEventListener('error', function(e) {
+    // Filter out common extension errors
+    if (e.message && (
+        e.message.includes('translate-page') || 
+        e.message.includes('save-page') ||
+        e.filename && e.filename.includes('content-all.js')
+    )) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Also handle promise rejections from extensions
+window.addEventListener('unhandledrejection', function(e) {
+    if (e.reason && (
+        e.reason.message && (
+            e.reason.message.includes('translate-page') || 
+            e.reason.message.includes('save-page')
+        )
+    )) {
+        e.preventDefault();
+        return false;
+    }
+});
+
 // DOM Elements
 const navbar = document.getElementById('navbar');
 const navToggle = document.getElementById('nav-toggle');
@@ -666,6 +692,13 @@ function handleNewsletterSubmit(e) {
 // Advanced Typing Animation
 function initAdvancedTyping() {
     const typingElement = document.getElementById('typing-text');
+    
+    // Check if the element exists before proceeding
+    if (!typingElement) {
+        console.log('Typing element not found, skipping advanced typing animation');
+        return;
+    }
+    
     const texts = [
         'Full Stack Developer',
         'UI/UX Designer',
