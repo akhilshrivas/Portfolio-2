@@ -213,6 +213,63 @@ function displayFormErrors(errors) {
     });
 }
 
+// Debug function to check EmailJS status
+function debugEmailJS() {
+    console.log('=== EmailJS Debug Information ===');
+    console.log('EmailJS library loaded:', typeof emailjs !== 'undefined');
+    
+    if (typeof emailjs !== 'undefined') {
+        console.log('EmailJS version:', emailjs.version);
+        console.log('EmailJS user ID:', emailjs.userID);
+        console.log('EmailJS services:', emailjs.services);
+    }
+    
+    // Check if the form exists
+    const contactForm = document.getElementById('contact-form');
+    console.log('Contact form found:', !!contactForm);
+    
+    if (contactForm) {
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        console.log('Form inputs found:', {
+            name: !!nameInput,
+            email: !!emailInput,
+            message: !!messageInput
+        });
+    }
+    
+    // Check EmailJS configuration
+    console.log('Service ID:', 'service_sw95ucn');
+    console.log('Template ID:', 'template_b7ixdiq');
+    console.log('Public Key:', 'b1BrCWFB58oB2stHK');
+    
+    console.log('=== End Debug Information ===');
+}
+
+// Initialize EmailJS
+function initEmailJS() {
+    try {
+        // Check if EmailJS is loaded
+        if (typeof emailjs === 'undefined') {
+            console.error('EmailJS library not loaded. Please check the CDN link.');
+            return false;
+        }
+        
+        // Initialize EmailJS with your public key
+        emailjs.init("b1BrCWFB58oB2stHK");
+        console.log('EmailJS initialized successfully');
+        
+        // Run debug function
+        setTimeout(debugEmailJS, 1000);
+        
+        return true;
+    } catch (error) {
+        console.error('Error initializing EmailJS:', error);
+        return false;
+    }
+}
+
 function handleFormSubmit(e) {
     e.preventDefault();
     
@@ -235,17 +292,122 @@ function handleFormSubmit(e) {
     // Show loading state
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
     
-    // Simulate form submission (replace with actual form submission logic)
-    setTimeout(() => {
+    // Check if EmailJS is available
+    if (typeof emailjs === 'undefined') {
+        console.error('EmailJS not available');
+        showNotification('Email service not available. Please try again later or contact me directly.', 'error');
         submitBtn.classList.remove('loading');
-        alert('Thank you for your message! I\'ll get back to you soon.');
-        contactForm.reset();
-    }, 2000);
+        submitBtn.disabled = false;
+        return;
+    }
+    
+    // Send email using EmailJS
+    sendEmail(formData, submitBtn);
 }
 
+function sendEmail(formData, submitBtn) {
+    // EmailJS service configuration
+    const serviceID = 'service_sw95ucn';
+    const templateID = 'template_b7ixdiq';
+    
+    // Template parameters
+    const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'akhilshrivas0@gmail.com', // Your email address
+        reply_to: formData.email
+    };
+    
+    console.log('Attempting to send email with params:', templateParams);
+    
+    emailjs.send(serviceID, templateID, templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            
+            // Success feedback
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+            
+            // Show success message
+            showNotification('Thank you for your message! I\'ll get back to you soon.', 'success');
+            
+            // Reset form
+            contactForm.reset();
+            
+        }, function(error) {
+            console.error('FAILED...', error);
+            
+            // Error feedback
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+            
+            // Provide more specific error messages
+            let errorMessage = 'Sorry, there was an error sending your message. ';
+            
+            if (error.status === 400) {
+                errorMessage += 'Please check your email address and try again.';
+            } else if (error.status === 500) {
+                errorMessage += 'Server error. Please try again later.';
+            } else if (error.status === 0) {
+                errorMessage += 'Network error. Please check your internet connection.';
+            } else {
+                errorMessage += 'Please try again or contact me directly.';
+            }
+            
+            // Show error message
+            showNotification(errorMessage, 'error');
+            
+            // Log detailed error for debugging
+            console.error('EmailJS Error Details:', {
+                status: error.status,
+                text: error.text,
+                message: error.message
+            });
+        });
+}
 
-
+// Notification system
+function showNotification(message, type) {
+    // Remove existing notifications
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    
+    // Set icon based on type
+    let icon = 'fa-info-circle';
+    if (type === 'success') icon = 'fa-check-circle';
+    else if (type === 'error') icon = 'fa-exclamation-circle';
+    else if (type === 'warning') icon = 'fa-exclamation-triangle';
+    
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas ${icon}"></i>
+            <span>${message}</span>
+            <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Auto remove after 5 seconds (except for info messages which stay longer)
+    const autoRemoveTime = type === 'info' ? 8000 : 5000;
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, autoRemoveTime);
+}
 
 
 // Typing Animation for Hero Section
@@ -388,6 +550,15 @@ function initParticles() {
 function init() {
     // Initialize theme
     initTheme();
+    
+    // Initialize EmailJS and check availability
+    const emailjsAvailable = initEmailJS();
+    
+    if (!emailjsAvailable) {
+        console.warn('EmailJS not available, using fallback email method');
+        // Add fallback email functionality
+        addFallbackEmail();
+    }
 
     // Add animation classes to elements
     const fadeElements = document.querySelectorAll('.about-content, .contact-content');
@@ -413,6 +584,48 @@ function init() {
     animateOnScroll();
     animateSkills();
     updateActiveNavLink();
+}
+
+// Fallback email method when EmailJS is not available
+function addFallbackEmail() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+    
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
+        
+        const errors = validateForm(formData);
+        
+        if (Object.keys(errors).length > 0) {
+            displayFormErrors(errors);
+            return;
+        }
+        
+        // Clear errors
+        displayFormErrors({});
+        
+        // Create mailto link
+        const subject = `Portfolio Contact from ${formData.name}`;
+        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+        const mailtoLink = `mailto:akhilshrivas0@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Show fallback message
+        showNotification('Opening email client... Please send the email manually.', 'info');
+        
+        // Open default email client
+        setTimeout(() => {
+            window.location.href = mailtoLink;
+        }, 1000);
+        
+        // Reset form
+        contactForm.reset();
+    });
 }
 
 // Event Listeners
@@ -773,3 +986,35 @@ function initBlogCards() {
         });
     });
 }
+
+// Manual test function for EmailJS (call from browser console)
+function testEmailJS() {
+    console.log('Testing EmailJS...');
+    
+    if (typeof emailjs === 'undefined') {
+        console.error('EmailJS not loaded');
+        return;
+    }
+    
+    const testParams = {
+        from_name: 'Test User',
+        from_email: 'test@example.com',
+        message: 'This is a test message from the portfolio contact form.',
+        to_email: 'akhilshrivas0@gmail.com',
+        reply_to: 'test@example.com'
+    };
+    
+    console.log('Sending test email with params:', testParams);
+    
+    emailjs.send('service_sw95ucn', 'template_b7ixdiq', testParams)
+        .then(function(response) {
+            console.log('Test email SUCCESS:', response);
+            alert('Test email sent successfully! Check your EmailJS dashboard.');
+        }, function(error) {
+            console.error('Test email FAILED:', error);
+            alert('Test email failed. Check console for details.');
+        });
+}
+
+// Make test function globally available
+window.testEmailJS = testEmailJS;

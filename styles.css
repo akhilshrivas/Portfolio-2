@@ -1,3 +1,10 @@
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --primary-color: #667eea;
     --primary-dark: #5a67d8;
@@ -41,13 +48,6 @@
     --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.6);
 }
 
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 html {
     scroll-behavior: smooth;
     font-size: 16px;
@@ -88,6 +88,8 @@ body {
     background: var(--bg-primary);
     transition: var(--transition);
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
     /* Improve scroll performance */
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
@@ -957,6 +959,7 @@ section {
 /* Contact Section */
 .contact {
     background: var(--bg-secondary);
+    padding: 80px 0 0 0; /* Top padding only, no bottom padding */
 }
 
 .contact-content {
@@ -1004,10 +1007,15 @@ section {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
     border: 1px solid var(--border-color);
+    margin-bottom: 0; /* Ensure no bottom margin */
 }
 
 .form-group {
     margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0; /* Remove margin from last form group */
 }
 
 .form-group input,
@@ -1036,6 +1044,11 @@ section {
     display: block;
 }
 
+/* Ensure submit button doesn't add extra space */
+.contact-form button[type="submit"] {
+    margin-bottom: 0;
+}
+
 .btn-loading {
     display: none;
 }
@@ -1053,6 +1066,17 @@ section {
     background: var(--bg-tertiary);
     padding: 2rem 0;
     border-top: 1px solid var(--border-color);
+    margin-top: 0; /* Ensure no extra margin */
+}
+
+/* Ensure contact section and footer are properly connected */
+.contact + .footer {
+    margin-top: 0;
+}
+
+/* Remove any potential margin from the last element in contact */
+.contact-content > *:last-child {
+    margin-bottom: 0;
 }
 
 .footer-content {
@@ -1466,6 +1490,16 @@ section::before {
 .notification-error {
     background: linear-gradient(135deg, #f44336, #d32f2f);
     border-left: 4px solid #C62828;
+}
+
+.notification-info {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    border-left: 4px solid #1565C0;
+}
+
+.notification-warning {
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+    border-left: 4px solid #EF6C00;
 }
 
 .notification-content {
